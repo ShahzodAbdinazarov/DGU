@@ -24,32 +24,46 @@ class CalculatorActivity : AppCompatActivity() {
         open(intent.getStringExtra("key") ?: "")
 
         binding.button1.setOnClickListener {
-            if (binding.edit1.text?.isNotEmpty() == true)
+            if (binding.edit1.text?.isNotEmpty() == true) {
                 binding.percent1.text = " ${binding.edit1.text.toString().toDouble() * 0.04} sum"
-            else binding.percent1.text = " ${0.toString().toDouble() * 0.04} sum"
+                binding.residual1.text = " ${binding.edit1.text.toString().toDouble() * 0.96} sum"
+            } else {
+                binding.percent1.text = " 0.0 sum"
+                binding.residual1.text = " 0.0 sum"
+            }
         }
         binding.button2.setOnClickListener {
-            if (binding.edit2.text?.isNotEmpty() == true && binding.editP2.text.isNotEmpty())
+            if (binding.edit2.text?.isNotEmpty() == true && binding.editP2.text.isNotEmpty()) {
                 binding.percent2.text = " ${binding.edit2.text.toString().toDouble() * binding.editP2.text.toString().toDouble() / 100} sum"
+                binding.residual2.text = " ${binding.edit2.text.toString().toDouble() * (1 - binding.editP2.text.toString().toDouble() / 100)} sum"
+            }
         }
         binding.button2.setOnClickListener {
             if (binding.editP2.text?.isNotEmpty() == true && binding.edit2.text.isNotEmpty()) {
                 binding.percent2.text = " ${binding.editP2.text.toString().toDouble() * binding.edit2.text.toString().toDouble() / 100} sum"
+                binding.residual2.text = " ${binding.edit2.text.toString().toDouble() * (1 - binding.editP2.text.toString().toDouble() / 100)} sum"
                 binding.percentP2.text = "Davlat boji ${binding.editP2.text}%"
             }
         }
         binding.button3.setOnClickListener {
-            if (binding.edit3.text?.isNotEmpty() == true)
+            if (binding.edit3.text?.isNotEmpty() == true) {
                 binding.percent3.text = " ${binding.edit3.text.toString().toDouble() * 0.12} sum"
-            else binding.percent3.text = " ${0.toString().toDouble()} sum"
+                binding.residual3.text = " ${binding.edit3.text.toString().toDouble() * 0.88} sum"
+            } else {
+                binding.percent3.text = " 0.0 sum"
+                binding.residual3.text = " 0.0 sum"
+            }
         }
         binding.button4.setOnClickListener {
-            if (binding.edit4.text?.isNotEmpty() == true && binding.editP4.text.isNotEmpty())
+            if (binding.edit4.text?.isNotEmpty() == true && binding.editP4.text.isNotEmpty()) {
                 binding.percent4.text = " ${binding.edit4.text.toString().toDouble() * binding.editP4.text.toString().toDouble() / 100} sum"
+                binding.residual4.text = " ${binding.edit4.text.toString().toDouble() * (1 - binding.editP4.text.toString().toDouble() / 100)} sum"
+            }
         }
         binding.button4.setOnClickListener {
             if (binding.editP4.text?.isNotEmpty() == true && binding.edit4.text.isNotEmpty()) {
                 binding.percent4.text = " ${binding.editP4.text.toString().toDouble() * binding.edit4.text.toString().toDouble() / 100} sum"
+                binding.residual4.text = " ${binding.edit4.text.toString().toDouble() * (1 - binding.editP4.text.toString().toDouble() / 100)} sum"
                 binding.percentP4.text = "Davlat boji ${binding.editP4.text}%"
             }
         }
