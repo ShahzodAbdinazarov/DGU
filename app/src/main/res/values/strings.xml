@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">DGU</string>
+    <string name="title">“Iqtisodiyotda axborot kommunikatsion texnologiyalar” fani mobil ilovasi</string>
+    <string name="title_1">Ma\'ruzalar</string>
+    <string name="title_2">Taqdimotlar</string>
+    <string name="title_3">Testlar</string>
+    <string name="title_4">Muallif haqida</string>
+    <string name="title_5">Refarat</string>
+    <string name="quiz_title">Test sinovi</string>
+    <string name="result">Natija</string>
+    <string name="finish">Tamom</string>
 </resources>
