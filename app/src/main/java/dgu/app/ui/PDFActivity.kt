@@ -13,7 +13,7 @@ class PDFActivity : AppCompatActivity() {
 
         val text: String? = intent.getStringExtra("title")
         val key: String? = intent.getStringExtra("key")
-        title = text?.substring(2) ?: ""
+        title = if (key == "file" || key == "lide" || key == "amal") text?.substring(2) ?: "" else text
 
         val pdfView = findViewById<PDFView>(R.id.pdfView)
         try {

@@ -35,15 +35,11 @@ class PdfListActivity : AppCompatActivity() {
             }
             "lide" -> {
                 colToolBar.title = "Taqdimotlar"
-                listBookmarks.setBackgroundColor(Color.parseColor("#FFFFFF"))
+                listBookmarks.setBackgroundColor(Color.parseColor("#FFEFD5"))
             }
-            "fayl" -> {
-                colToolBar.title = "Amaliy mavzular"
-                listBookmarks.setBackgroundColor(Color.parseColor("#7FFFD4"))
-            }
-            "llll" -> {
-                colToolBar.title = "Laboratoriya ishlari"
-                listBookmarks.setBackgroundColor(Color.parseColor("#D8BFD8"))
+            "amal" -> {
+                colToolBar.title = "Amaliy mashg'ulotlar"
+                listBookmarks.setBackgroundColor(Color.parseColor("#EFFFD5"))
             }
             else -> {
                 colToolBar.title = "Nomalum xarakart"

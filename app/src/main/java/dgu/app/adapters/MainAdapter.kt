@@ -11,7 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import dgu.app.R
 import dgu.app.model.Main
 import dgu.app.quiz.QuizActivity
-import dgu.app.ui.*
+import dgu.app.ui.MainActivity
+import dgu.app.ui.PDFActivity
+import dgu.app.ui.PdfListActivity
+import dgu.app.youtube.ListVideos
 
 @SuppressLint("SetTextI18n")
 class MainAdapter(private val activity: MainActivity, private val files: ArrayList<Main>) :
@@ -40,47 +43,18 @@ class MainAdapter(private val activity: MainActivity, private val files: ArrayLi
 
             view.setOnClickListener {
                 when (main.action) {
-                    "file" -> activity.startActivity(Intent(activity, PdfListActivity::class.java).putExtra("key", main.action))
-                    "lide" -> activity.startActivity(Intent(activity, PdfListActivity::class.java).putExtra("key", main.action))
-                    "fayl" -> activity.startActivity(Intent(activity, PdfListActivity::class.java).putExtra("key", main.action))
-                    "llll" -> activity.startActivity(Intent(activity, PdfListActivity::class.java).putExtra("key", main.action))
+                    "file", "lide", "amal" -> activity.startActivity(Intent(activity, PdfListActivity::class.java).putExtra("key", main.action))
                     "quiz" -> activity.startActivity(Intent(activity, QuizActivity::class.java))
-                    "url" -> activity.startActivity(
-                        Intent(activity, UrlActivity::class.java)
-                            .putExtra("title", main.title)
-                            .putExtra("key", main.action)
-                    )
-                    "calc" -> activity.startActivity(
-                        Intent(activity, UrlActivity::class.java)
-                            .putExtra("title", main.title)
-                            .putExtra("key", main.action)
-                    )
-                    "web" -> activity.startActivity(
-                        Intent(activity, UrlActivity::class.java)
-                            .putExtra("title", main.title)
-                            .putExtra("key", main.action)
-                    )
-                    "avol" -> activity.startActivity(
+                    "url" -> activity.startActivity(Intent(activity, ListVideos::class.java))
+                    else -> activity.startActivity(
                         Intent(activity, PDFActivity::class.java)
-                            .putExtra("title", "01 ${main.title}")
+                            .putExtra("title", main.title)
                             .putExtra("key", main.action)
                     )
-                    "author" -> activity.startActivity(
-                        Intent(activity, PDFActivity::class.java)
-                            .putExtra("title", "01 ${main.title}")
-                            .putExtra("key", main.action)
-                    )
-                    else -> activity.startActivity(Intent(activity, PDFActivity::class.java).putExtra("title", getItem(adapterPosition).title))
-
                 }
             }
-
         }
 
-    }
-
-    private fun getItem(index: Int): Main {
-        return files[index]
     }
 
 }
