@@ -3,6 +3,7 @@ package dgu.app.ui
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -30,16 +31,28 @@ class PdfListActivity : AppCompatActivity() {
         key = intent.getStringExtra("key").toString()
         when (key) {
             "file" -> {
+                findViewById<ImageView>(R.id.banner).setImageResource(R.drawable.banner)
                 colToolBar.title = "Ma'ruzalar"
                 listBookmarks.setBackgroundColor(Color.parseColor("#C0C0C0"))
             }
-            "lide" -> {
-                colToolBar.title = "Taqdimotlar"
+            "labo" -> {
+                findViewById<ImageView>(R.id.banner).setImageResource(R.drawable.banner)
+                colToolBar.title = "Laboratoriyalar"
                 listBookmarks.setBackgroundColor(Color.parseColor("#FFEFD5"))
             }
             "amal" -> {
-                colToolBar.title = "Amaliy mashg'ulotlar"
+                findViewById<ImageView>(R.id.banner).setImageResource(R.drawable.banner)
+                colToolBar.title = "Adabiyotlar"
                 listBookmarks.setBackgroundColor(Color.parseColor("#EFFFD5"))
+            }
+            "lide" -> {
+                colToolBar.title = "Taqdimotlar"
+                listBookmarks.setBackgroundColor(Color.parseColor("#EFD5FF"))
+            }
+            "engl" -> {
+                findViewById<ImageView>(R.id.banner).setImageResource(R.drawable.banner4)
+                colToolBar.title = "Inglizcha"
+                listBookmarks.setBackgroundColor(Color.parseColor("#C0F0D0"))
             }
             else -> {
                 colToolBar.title = "Nomalum xarakart"

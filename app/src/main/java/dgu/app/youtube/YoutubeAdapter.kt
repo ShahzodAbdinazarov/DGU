@@ -12,8 +12,8 @@ import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import dgu.app.R
 
-class VideoAdapter internal constructor(private val vContext: Context, private val youTubeVideosList: List<YouTubeVideos>) :
-    RecyclerView.Adapter<VideoAdapter.VideoViewHolder?>() {
+class YoutubeAdapter internal constructor(private val vContext: Context, private val youTubeVideosList: List<YouTubeVideos>) :
+    RecyclerView.Adapter<YoutubeAdapter.VideoViewHolder?>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
         val view: View = LayoutInflater.from(vContext).inflate(R.layout.item_video, parent, false)
         return VideoViewHolder(view)

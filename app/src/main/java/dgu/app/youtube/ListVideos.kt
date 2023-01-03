@@ -20,7 +20,7 @@ class ListVideos : AppCompatActivity() {
         recyclerView?.setHasFixedSize(true)
         recyclerView?.layoutManager = LinearLayoutManager(this)
         setData()
-        val videoAdapter = VideoAdapter(this, youtubeVideos)
+        val videoAdapter = YoutubeAdapter(this, youtubeVideos)
         recyclerView?.setAdapter(videoAdapter)
     }
 

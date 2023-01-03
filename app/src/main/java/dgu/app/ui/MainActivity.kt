@@ -8,7 +8,6 @@ import com.google.android.material.appbar.CollapsingToolbarLayout
 import dgu.app.R
 import dgu.app.adapters.MainAdapter
 import dgu.app.utils.getMainList
-import dgu.app.utils.setDatas
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,16 +19,10 @@ class MainActivity : AppCompatActivity() {
         colToolBar.setExpandedTitleTextAppearance(R.style.ExpandedAppBar)
         colToolBar.setCollapsedTitleTextAppearance(R.style.CollapsedAppBar)
 
-        setData()
-
         findViewById<RecyclerView>(R.id.listDGU).apply {
             layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             adapter = MainAdapter(this@MainActivity, getMainList())
         }
-    }
-
-    private fun setData() {
-        this.setDatas()
     }
 
 }

@@ -10,20 +10,17 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import dgu.app.R
 import dgu.app.model.Main
-import dgu.app.quiz.QuizActivity
 import dgu.app.ui.MainActivity
 import dgu.app.ui.PDFActivity
 import dgu.app.ui.PdfListActivity
-import dgu.app.youtube.ListVideos
+import dgu.app.ui.UrlActivity
 
 @SuppressLint("SetTextI18n")
-class MainAdapter(private val activity: MainActivity, private val files: ArrayList<Main>) :
-    RecyclerView.Adapter<MainAdapter.BookmarksHolder>() {
+class MainAdapter(private val activity: MainActivity, private val files: ArrayList<Main>) : RecyclerView.Adapter<MainAdapter.BookmarksHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookmarksHolder =
-        BookmarksHolder(
-            LayoutInflater.from(activity).inflate(R.layout.item_main, parent, false)
-        )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookmarksHolder = BookmarksHolder(
+        LayoutInflater.from(activity).inflate(R.layout.item_main, parent, false)
+    )
 
     override fun onBindViewHolder(holder: BookmarksHolder, position: Int) {
         holder.bindItems(files[position])
@@ -43,13 +40,14 @@ class MainAdapter(private val activity: MainActivity, private val files: ArrayLi
 
             view.setOnClickListener {
                 when (main.action) {
-                    "file", "lide", "amal" -> activity.startActivity(Intent(activity, PdfListActivity::class.java).putExtra("key", main.action))
-                    "quiz" -> activity.startActivity(Intent(activity, QuizActivity::class.java))
-                    "url" -> activity.startActivity(Intent(activity, ListVideos::class.java))
+                    "file", "labo", "lide", "amal", "engl" -> activity.startActivity(
+                        Intent(activity, PdfListActivity::class.java).putExtra(
+                            "key", main.action
+                        )
+                    )
+                    "video" -> activity.startActivity(Intent(activity, UrlActivity::class.java))
                     else -> activity.startActivity(
-                        Intent(activity, PDFActivity::class.java)
-                            .putExtra("title", main.title)
-                            .putExtra("key", main.action)
+                        Intent(activity, PDFActivity::class.java).putExtra("title", main.title).putExtra("key", main.action)
                     )
                 }
             }

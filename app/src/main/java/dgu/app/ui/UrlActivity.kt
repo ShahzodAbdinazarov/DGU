@@ -14,14 +14,15 @@ class UrlActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_url)
 
-        title = intent.getStringExtra("title") ?: ""
-        val key = intent.getStringExtra("key") ?: ""
+        title = intent.getStringExtra("title") ?: "Virtual laboratoriyalar"
+        val key = intent.getStringExtra("key") ?: "video"
 
         findViewById<RecyclerView>(R.id.listDGU).apply {
             setBackgroundColor(
                 Color.parseColor(
                     when (key) {
                         "calc" -> "#87CEEB"
+                        "video" -> "#87CEEB"
                         "url" -> "#C0C0C0"
                         "web" -> "#C0C0C0"
                         else -> "#FFFFFF"

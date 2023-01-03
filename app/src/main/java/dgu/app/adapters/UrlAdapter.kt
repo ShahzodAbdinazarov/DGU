@@ -12,6 +12,7 @@ import dgu.app.R
 import dgu.app.model.Havola
 import dgu.app.ui.CalculatorActivity
 import dgu.app.ui.UrlActivity
+import dgu.app.video.VideoActivity
 
 
 @SuppressLint("SetTextI18n")
@@ -32,7 +33,6 @@ class UrlAdapter(private val activity: UrlActivity, private val files: ArrayList
     inner class BookmarksHolder(v: View) : RecyclerView.ViewHolder(v) {
 
         private val title: TextView = v.findViewById(R.id.txtDGU)
-        private val view = v
 
         fun bindItems(havola: Havola) {
             title.text = havola.title
@@ -42,16 +42,16 @@ class UrlAdapter(private val activity: UrlActivity, private val files: ArrayList
                     when (havola.url) {
                         "one", "two", "three", "four" -> Intent(activity, CalculatorActivity::class.java)
                             .putExtra("key", havola.url).putExtra("title", havola.title)
+                        "video" ->
+                            Intent(activity, VideoActivity::class.java)
+                            .putExtra("name", havola.title)
+                            .putExtra("path", havola.path)
                         else -> Intent(Intent.ACTION_VIEW, Uri.parse(havola.url))
                     }
                 )
             }
         }
 
-    }
-
-    private fun getItem(index: Int): Havola {
-        return files[index]
     }
 
 }
