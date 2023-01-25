@@ -17,23 +17,21 @@
         tools:targetApi="s">
         <activity
             android:name=".video.VideoActivity"
-            android:exported="false"
             android:parentActivityName=".video.VideoActivity" />
         <activity
+            android:name=".quiz.QuizActivity"
+            android:parentActivityName=".quiz.QuizActivity" />
+        <activity
             android:name=".youtube.VideoFullScreen"
-            android:exported="false"
             android:parentActivityName=".youtube.VideoFullScreen" />
         <activity
             android:name=".youtube.ListVideos"
-            android:exported="false"
             android:parentActivityName=".youtube.ListVideos" />
         <activity
             android:name=".ui.UrlActivity"
-            android:exported="false"
             android:parentActivityName=".ui.UrlActivity" />
         <activity
             android:name=".ui.PdfListActivity"
-            android:exported="false"
             android:parentActivityName=".ui.PdfListActivity"
             android:theme="@style/Theme.DGU.NoActionBar" />
         <activity

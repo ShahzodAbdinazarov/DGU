@@ -20,13 +20,10 @@ class UrlAdapter(private val activity: UrlActivity, private val files: ArrayList
     RecyclerView.Adapter<UrlAdapter.BookmarksHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookmarksHolder =
-        BookmarksHolder(
-            LayoutInflater.from(activity).inflate(R.layout.item_dgu, parent, false)
-        )
+        BookmarksHolder(LayoutInflater.from(activity).inflate(R.layout.item_dgu, parent, false))
 
-    override fun onBindViewHolder(holder: BookmarksHolder, position: Int) {
+    override fun onBindViewHolder(holder: BookmarksHolder, position: Int) =
         holder.bindItems(files[position])
-    }
 
     override fun getItemCount() = files.size
 
@@ -40,12 +37,15 @@ class UrlAdapter(private val activity: UrlActivity, private val files: ArrayList
             title.setOnClickListener {
                 activity.startActivity(
                     when (havola.url) {
-                        "one", "two", "three", "four" -> Intent(activity, CalculatorActivity::class.java)
+                        "one", "two", "three", "four" -> Intent(
+                            activity,
+                            CalculatorActivity::class.java
+                        )
                             .putExtra("key", havola.url).putExtra("title", havola.title)
                         "video" ->
                             Intent(activity, VideoActivity::class.java)
-                            .putExtra("name", havola.title)
-                            .putExtra("path", havola.path)
+                                .putExtra("name", havola.title)
+                                .putExtra("path", havola.path)
                         else -> Intent(Intent.ACTION_VIEW, Uri.parse(havola.url))
                     }
                 )

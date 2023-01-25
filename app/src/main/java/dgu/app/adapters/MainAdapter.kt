@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import dgu.app.R
 import dgu.app.model.Main
+import dgu.app.quiz.QuizActivity
 import dgu.app.ui.MainActivity
 import dgu.app.ui.PDFActivity
 import dgu.app.ui.PdfListActivity
@@ -40,12 +41,13 @@ class MainAdapter(private val activity: MainActivity, private val files: ArrayLi
 
             view.setOnClickListener {
                 when (main.action) {
-                    "file", "labo", "lide", "amal", "engl" -> activity.startActivity(
-                        Intent(activity, PdfListActivity::class.java).putExtra(
-                            "key", main.action
-                        )
+                    "file", "labo", "lide", "amal", "leks", "data", "maqo", "free" -> activity.startActivity(
+                        Intent(activity, PdfListActivity::class.java)
+                            .putExtra("key", main.action)
+                            .putExtra("title", main.title)
                     )
                     "video" -> activity.startActivity(Intent(activity, UrlActivity::class.java))
+                    "quiz" -> activity.startActivity(Intent(activity, QuizActivity::class.java))
                     else -> activity.startActivity(
                         Intent(activity, PDFActivity::class.java).putExtra("title", main.title).putExtra("key", main.action)
                     )
