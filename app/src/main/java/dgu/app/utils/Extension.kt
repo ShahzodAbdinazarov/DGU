@@ -11,18 +11,14 @@ import java.io.IOException
 import java.io.InputStream
 
 fun getMainList() = arrayListOf(
-    Main(0, R.drawable.lab, "Ma'ruzalar", "file"),
-    Main(0, R.drawable.taqdimot, "Taqdimotlar", "lide"),
-    Main(0, R.drawable.doc, "Amaliy ishlar", "amal"),
-    Main(0, R.drawable.doces, "Laboratoriya ishlari", "labo"),
-    Main(0, R.drawable.docs, "Taqdimotlar", "lide"),
-    Main(0, R.drawable.questions, "Leksiya", "leks"),
-    Main(0, R.drawable.glossary, "Ma'lumotlar", "data"),
-    Main(0, R.drawable.documents, "Maqolalar", "maqo"),
-    Main(0, R.drawable.quiz, "Mustaqil ishlar", "free"),
-    Main(0, R.drawable.calculator, "Ахборот тизимлари ва тармоқлари ишчи дастур", "fayl01 "),
-    Main(0, R.drawable.savol, "ЯНсаволлари", "fayl02 "),
-    Main(0, R.drawable.about, "Muallif haqida", "fayl03 "),
+    Main(0, R.drawable.doc01, "Biologiya ma'ruzalar", "file01 "),
+    Main(0, R.drawable.doc02, "Biologiya 1-kursLaboratoriya", "file01 "),
+    Main(0, R.drawable.doc03, "Izohli lug'at", "file01 "),
+    Main(0, R.drawable.doc04, "Nazorat savollari", "file01 "),
+    Main(0, R.drawable.doc, "Sillabus", "file01 "),
+    Main(0, R.drawable.doces, "Ta'lim texnologiyasi", "file01 "),
+    Main(0, R.drawable.docs, "Test savollari", "file01 "),
+    Main(0, R.drawable.about, "Mualliflar haqida", "file08 "),
 )
 
 fun getUrlList(key: String) = when (key) {
@@ -30,10 +26,12 @@ fun getUrlList(key: String) = when (key) {
         Havola(0, "Xalq banki hisobotini taqdim qilish 1 qism", "https://youtu.be/OjAqz-C_Xr8"),
         Havola(0, "Elektron soliq xizmatlari", "https://youtu.be/ZsYkrdZDHxs"),
     )
+
     "video" -> arrayListOf(
         Havola(0, "Daromad solig'i", "three"),
         Havola(0, "Yangi daromad solig'i", "four"),
     )
+
     else -> arrayListOf(
         Havola(0, "my.gov.uz", "https://my.gov.uz/oz"),
         Havola(0, "soliq.uz", "https://soliq.uz/"),

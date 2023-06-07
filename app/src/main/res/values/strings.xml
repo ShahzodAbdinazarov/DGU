@@ -1,10 +1,4 @@
 <resources>
     <string name="app_name">DGU</string>
-    <string name="title">“Axborot tizimlari va tarmoqlari” fanidan android mobil ilovasi</string>
-    <string name="title_1">Ma\'ruzalar</string>
-    <string name="title_2">Taqdimotlar</string>
-    <string name="title_3">Testlar</string>
-    <string name="title_4">Muallif haqida</string>
-    <string name="title_5">Refarat</string>
-    <string name="finish">Tamom</string>
+    <string name="title">“Biologiya” fani android mobil ilovasi</string>
 </resources>
