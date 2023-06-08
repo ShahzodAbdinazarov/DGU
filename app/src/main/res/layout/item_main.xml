@@ -23,6 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
                 android:layout_margin="10dp"
+                android:src="@drawable/doc01"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/app_name"
                 android:scaleType="centerCrop" />
