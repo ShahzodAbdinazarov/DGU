@@ -7,7 +7,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "dgu.app.v046"
+        applicationId "dgu.app.v048"
         minSdk 21
         targetSdk 33
         versionCode 1
