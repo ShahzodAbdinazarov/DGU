@@ -11,28 +11,22 @@ import java.io.IOException
 import java.io.InputStream
 
 fun getMainList() = arrayListOf(
-    Main(0, R.drawable.doc01, "Qiziqarli matematika", "file"),
-    Main(0, R.drawable.doc02, "Oraliq nazorat 1-semestr", "fayl01 "),
-    Main(0, R.drawable.glossary, "Oraliq nazorat 2-semestr", "fayl01 "),
-    Main(0, R.drawable.doc03, "Sillabus", "fayl01 "),
-    Main(0, R.drawable.docs, "Tipik masalalar to'plami 1-qism", "fayl01 "),
-    Main(0, R.drawable.doc, "Tipik masalalar to'plami 2-qism", "fayl01 "),
-    Main(0, R.drawable.doces, "Topshiriqlar To'plami", "fayl01 "),
-    Main(0, R.drawable.documents, "Yakuniy nazorat bahorgi semestr", "fayl01 "),
-    Main(0, R.drawable.quiz, "yakuniy nazorat variantlari Kuzgi", "fayl01 "),
-    Main(0, R.drawable.about, "МАЪЛУМОТНОМА", "fayl01 "),
+    Main(0, R.drawable.doc03, "Amaliy mashg'ulotlar", "fayl01 "),
+    Main(0, R.drawable.doc04, "Baholash mezonlari", "fayl01 "),
+    Main(0, R.drawable.lab, "Laboratoriya ishlari", "fayl01 "),
+    Main(0, R.drawable.glossary, "Maruzalar matni", "fayl01 "),
+    Main(0, R.drawable.doc, "Mustaqil ta'lim mashg'ulotlari", "fayl01 "),
+    Main(0, R.drawable.docs, "Oraliq nazorat savollari", "fayl01 "),
+    Main(0, R.drawable.doces, "Ta'lim texnologiyasi", "fayl01 "),
+    Main(0, R.drawable.savol, "Yakuniy savollari", "fayl01 "),
+    Main(0, R.drawable.quiz, "Test", "fayl01 "),
+    Main(0, R.drawable.about, "Muallif haqida", "fayl01 "),
 )
 
 /*
-fayl01 Oraliq nazorat 1-semestr.pdf
-fayl01 Oraliq nazorat 2-semestr.pdf
-fayl01 Sillabus.pdf
-fayl01 Tipik masalalar to'plami 1-qism.pdf
-fayl01 Tipik masalalar to'plami 2-qism.pdf
-fayl01 Topshiriqlar To'plami.pdf
-fayl01 Yakuniy nazorat bahorgi semestr.pdf
-fayl01 yakuniy nazorat variantlari Kuzgi.pdf
-fayl01 МАЪЛУМОТНОМА.pdf
+
+
+
 */
 
 fun getUrlList(key: String) = when (key) {
