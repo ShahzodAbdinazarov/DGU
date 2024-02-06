@@ -1,6 +1,7 @@
 package dgu.app.ui
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import dgu.app.R
-import dgu.app.adapters.DGUAdapter
-import java.io.IOException
+import dgu.app.adapters.PdfAdapter
+import dgu.app.utils.getMainFiles
 
 class PdfListActivity : AppCompatActivity() {
 
@@ -29,27 +30,26 @@ class PdfListActivity : AppCompatActivity() {
         val listBookmarks = findViewById<RecyclerView>(R.id.listDGU)
         key = intent.getStringExtra("key").toString()
 
-        colToolBar.title = intent.getStringExtra("title")?:"Ma'lumotlar"
+        colToolBar.title = intent.getStringExtra("title") ?: "Ma'lumotlar"
         listBookmarks.setBackgroundColor(Color.parseColor("#FFEFD5"))
 
-        val adapter = DGUAdapter(this, getFiles() as ArrayList<String>)
-        listBookmarks.layoutManager =
-            StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
-        listBookmarks.adapter = adapter
+        val path = if (key.startsWith("/")) key.substringAfter("/") else key
 
-    }
+        listBookmarks.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+        listBookmarks.adapter = PdfAdapter {
+            if (it.isFolder == true) {
+                startActivity(
+                    Intent(this@PdfListActivity, PdfListActivity::class.java)
+                        .putExtra("key", it.path)
+                        .putExtra("title", it.fileName)
+                )
+            } else startActivity(
+                Intent(this@PdfListActivity, PDFActivity::class.java)
+                    .putExtra("title", it.fileName)
+                    .putExtra("key", it.path)
+            )
+        }.apply { items = this@PdfListActivity.getMainFiles(path) }
 
-    private fun getFiles(): List<String> {
-        val files: MutableList<String> = ArrayList()
-        val list: Array<String>?
-        try {
-            list = assets.list("")
-            if (list!!.isNotEmpty()) for (file in list) if (file.startsWith(key))
-                files.add(file.replace(".pdf", "").substring(4))
-        } catch (e: IOException) {
-            return files
-        }
-        return files
     }
 
 }

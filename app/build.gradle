@@ -6,9 +6,10 @@ plugins {
 android {
     compileSdk 34
 
+    namespace 'dgu.app'
     defaultConfig {
         applicationId "dgu.app.v055"
-        minSdk 21
+        minSdk 23
         targetSdk 34
         versionCode 1
         versionName "1.0"
@@ -32,7 +33,6 @@ android {
     viewBinding {
         enabled = true
     }
-    namespace 'dgu.app'
 }
 
 dependencies {

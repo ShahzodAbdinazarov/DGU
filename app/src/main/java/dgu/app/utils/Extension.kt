@@ -1,6 +1,7 @@
 package dgu.app.utils
 
 import android.app.Activity
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import dgu.app.R
@@ -60,3 +61,59 @@ fun Activity.getQuizzes(): ArrayList<Quiz> {
     }
     return Gson().fromJson(json, object : TypeToken<ArrayList<Quiz?>?>() {}.type)
 }
+
+fun Activity.getFiles(newFolder: String = ""): List<MyFile> {
+    val fileList = mutableListOf<MyFile>()
+    val folderName = if (newFolder.startsWith("/")) newFolder.substring(1) else newFolder
+
+    try {
+        val assetList = assets.list(folderName) ?: emptyArray()
+
+        for (i in assetList.indices) {
+            var asset = assetList[i]
+            val excludedValues = setOf("OWNERS", "images", "geoid_height_map", "webkit")
+            if (asset !in excludedValues && !asset.endsWith(".xml") && !asset.endsWith(".json")) {
+                val filePath = "$folderName/$asset"
+                val isFolder = !asset.contains(".")
+                val image = if (!asset.startsWith("Muallif")) imageList[i] else R.drawable.about
+                asset = if (!isFolder) asset.substringBeforeLast(".") else asset
+                fileList.add(MyFile(asset, isFolder, filePath, image))
+
+                Log.e("TAG", "ASSET: ${MyFile(asset, isFolder, filePath, image)}")
+                if (isFolder) fileList.addAll(this.getFiles(filePath))
+            }
+        }
+    } catch (e: IOException) {
+        e.printStackTrace()
+    }
+
+    return fileList
+}
+
+data class MyFile(
+    val fileName: String? = null,
+    val isFolder: Boolean? = null,
+    val path: String? = null,
+    val image: Int? = R.drawable.about
+)
+
+fun Activity.getMainFiles(parent: String? = "") = ArrayList(this.getFiles().filter { it.path?.substringBeforeLast("/") == parent })
+
+val imageList = arrayListOf(
+    R.drawable.doc,
+    R.drawable.doc01,
+    R.drawable.doc02,
+    R.drawable.doc03,
+    R.drawable.doc04,
+    R.drawable.doces,
+    R.drawable.docs,
+    R.drawable.documents,
+    R.drawable.glossary,
+    R.drawable.lab,
+    R.drawable.loho,
+    R.drawable.questions,
+    R.drawable.quiz,
+    R.drawable.savol,
+    R.drawable.taqdimot,
+    R.drawable.calculator,
+)

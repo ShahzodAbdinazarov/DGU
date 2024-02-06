@@ -13,10 +13,14 @@
         app:cardCornerRadius="30dp">
 
         <LinearLayout
-            android:orientation="vertical"
-            android:gravity="center"
+            android:id="@+id/layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:foreground="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/image"

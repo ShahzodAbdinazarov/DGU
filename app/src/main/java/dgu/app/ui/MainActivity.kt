@@ -1,13 +1,14 @@
 package dgu.app.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import dgu.app.R
-import dgu.app.adapters.MainAdapter
-import dgu.app.utils.getMainList
+import dgu.app.adapters.FileAdapter
+import dgu.app.utils.getMainFiles
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +22,19 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<RecyclerView>(R.id.listDGU).apply {
             layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-            adapter = MainAdapter(this@MainActivity, getMainList())
+            adapter = FileAdapter {
+                if (it.isFolder == true) {
+                    startActivity(
+                        Intent(this@MainActivity, PdfListActivity::class.java)
+                            .putExtra("key", it.path)
+                            .putExtra("title", it.fileName)
+                    )
+                } else startActivity(
+                    Intent(this@MainActivity, PDFActivity::class.java)
+                        .putExtra("title", it.fileName)
+                        .putExtra("key", it.path)
+                )
+            }.apply { items = this@MainActivity.getMainFiles() }
         }
     }
 

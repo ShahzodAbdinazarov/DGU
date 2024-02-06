@@ -1,6 +1,7 @@
 package dgu.app.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.pdfview.PDFView
@@ -11,16 +12,20 @@ class PDFActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pdf)
 
-        val text: String? = intent.getStringExtra("title")
-        val key: String? = intent.getStringExtra("key")
+        val text: String = intent.getStringExtra("title").toString()
+        val key: String = intent.getStringExtra("key").toString()
         title = when (key) {
-            "file", "labo", "lide", "amal", "leks", "data", "maqo", "free" -> text?.substring(2) ?: ""
+            "file", "labo", "lide", "amal", "leks", "data", "maqo", "free" -> text.substring(2)
             else -> text
         }
 
+        val path = if (key.startsWith("/")) key.substringAfter("/") else key
+
+        Log.e("TAG", "onCreate: $key")
+
         val pdfView = findViewById<PDFView>(R.id.pdfView)
         try {
-            pdfView.fromAsset("$key$text.pdf").show()
+            pdfView.fromAsset(path).show()
         } catch (e: Exception) {
             Toast.makeText(this, "Fayl topilmadi!", Toast.LENGTH_SHORT).show()
         }
