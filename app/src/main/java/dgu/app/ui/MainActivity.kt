@@ -20,6 +20,10 @@ class MainActivity : AppCompatActivity() {
         colToolBar.setExpandedTitleTextAppearance(R.style.ExpandedAppBar)
         colToolBar.setCollapsedTitleTextAppearance(R.style.CollapsedAppBar)
 
+        val list = this@MainActivity.getMainFiles()
+
+        list.sortBy { if (it.fileName?.lowercase()?.contains("muallif") == true) Int.MAX_VALUE else 0 }
+
         findViewById<RecyclerView>(R.id.listDGU).apply {
             layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             adapter = FileAdapter {
@@ -34,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                         .putExtra("title", it.fileName)
                         .putExtra("key", it.path)
                 )
-            }.apply { items = this@MainActivity.getMainFiles() }
+            }.apply { items = list }
         }
     }
 

@@ -14,7 +14,7 @@ import dgu.app.utils.getMainFiles
 
 class PdfListActivity : AppCompatActivity() {
 
-    var key: String = ""
+    private var key: String = ""
 
     @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {

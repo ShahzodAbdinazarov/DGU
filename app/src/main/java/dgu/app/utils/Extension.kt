@@ -75,11 +75,11 @@ fun Activity.getFiles(newFolder: String = ""): List<MyFile> {
             if (asset !in excludedValues && !asset.endsWith(".xml") && !asset.endsWith(".json")) {
                 val filePath = "$folderName/$asset"
                 val isFolder = !asset.contains(".")
-                val image = if (!asset.startsWith("Muallif")) imageList[i] else R.drawable.about
+                val image = if (!asset.startsWith("Muallif") && imageList.size > i && folderName.isEmpty()) imageList[i] else R.drawable.about
                 asset = if (!isFolder) asset.substringBeforeLast(".") else asset
                 fileList.add(MyFile(asset, isFolder, filePath, image))
 
-                Log.e("TAG", "ASSET: ${MyFile(asset, isFolder, filePath, image)}")
+                Log.e("TAG", "ASSET: ${MyFile(asset, isFolder, filePath, image)} --- $folderName")
                 if (isFolder) fileList.addAll(this.getFiles(filePath))
             }
         }
