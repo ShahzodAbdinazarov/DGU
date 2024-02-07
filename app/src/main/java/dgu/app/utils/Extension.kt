@@ -1,7 +1,6 @@
 package dgu.app.utils
 
 import android.app.Activity
-import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import dgu.app.R
@@ -62,32 +61,25 @@ fun Activity.getQuizzes(): ArrayList<Quiz> {
     return Gson().fromJson(json, object : TypeToken<ArrayList<Quiz?>?>() {}.type)
 }
 
-fun Activity.getFiles(newFolder: String = ""): List<MyFile> {
+fun Activity.getFiles(newFolder: String = ""): ArrayList<MyFile> {
+    val folderName = newFolder.trimStart('/')
     val fileList = mutableListOf<MyFile>()
-    val folderName = if (newFolder.startsWith("/")) newFolder.substring(1) else newFolder
 
     try {
-        val assetList = assets.list(folderName) ?: emptyArray()
-
-        for (i in assetList.indices) {
-            var asset = assetList[i]
-            val excludedValues = setOf("OWNERS", "images", "geoid_height_map", "webkit")
-            if (asset !in excludedValues && !asset.endsWith(".xml") && !asset.endsWith(".json")) {
-                val filePath = "$folderName/$asset"
-                val isFolder = !asset.contains(".")
-                val image = if (!asset.startsWith("Muallif") && imageList.size > i && folderName.isEmpty()) imageList[i] else R.drawable.about
-                asset = if (!isFolder) asset.substringBeforeLast(".") else asset
-                fileList.add(MyFile(asset, isFolder, filePath, image))
-
-                Log.e("TAG", "ASSET: ${MyFile(asset, isFolder, filePath, image)} --- $folderName")
-                if (isFolder) fileList.addAll(this.getFiles(filePath))
-            }
+        var i = 0
+        assets.list(folderName)?.forEach { asset ->
+            val filePath = "$folderName/$asset"
+            val isFolder = !asset.contains(".")
+            val image = if (folderName == "DGU" && imageList.size > i) if (asset.startsWith("Muallif")) R.drawable.about else imageList[i++] else null
+            val fileName = if (!isFolder) asset.substringBeforeLast(".") else asset
+            fileList.add(MyFile(fileName, isFolder, filePath, image))
+            if (isFolder) fileList.addAll(this.getFiles(filePath))
         }
     } catch (e: IOException) {
         e.printStackTrace()
     }
 
-    return fileList
+    return ArrayList(fileList)
 }
 
 data class MyFile(
@@ -97,7 +89,7 @@ data class MyFile(
     val image: Int? = R.drawable.about
 )
 
-fun Activity.getMainFiles(parent: String? = "") = ArrayList(this.getFiles().filter { it.path?.substringBeforeLast("/") == parent })
+fun Activity.getMainFiles(parent: String? = "DGU") = ArrayList(this.getFiles().filter { it.path?.substringBeforeLast("/") == parent })
 
 val imageList = arrayListOf(
     R.drawable.doc,
