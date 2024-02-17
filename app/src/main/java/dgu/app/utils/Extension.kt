@@ -89,7 +89,7 @@ data class MyFile(
     val image: Int? = R.drawable.about
 )
 
-fun Activity.getMainFiles(parent: String? = "DGU") = ArrayList(this.getFiles().filter { it.path?.substringBeforeLast("/") == parent })
+fun Activity.getMainFiles(parent: String? = "DGU") = this.getFiles().filter { it.path?.substringBeforeLast("/") == parent }
 
 val imageList = arrayListOf(
     R.drawable.doc,

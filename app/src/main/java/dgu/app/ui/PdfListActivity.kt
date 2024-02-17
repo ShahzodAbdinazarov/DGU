@@ -34,6 +34,7 @@ class PdfListActivity : AppCompatActivity() {
         listBookmarks.setBackgroundColor(Color.parseColor("#FFEFD5"))
 
         val path = if (key.startsWith("/")) key.substringAfter("/") else key
+        val list = this@PdfListActivity.getMainFiles(path).sortedByDescending { it.isFolder }
 
         listBookmarks.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
         listBookmarks.adapter = PdfAdapter {
@@ -48,7 +49,7 @@ class PdfListActivity : AppCompatActivity() {
                     .putExtra("title", it.fileName)
                     .putExtra("key", it.path)
             )
-        }.apply { items = this@PdfListActivity.getMainFiles(path) }
+        }.apply { items = ArrayList(list) }
 
     }
 
