@@ -13,7 +13,7 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.DGU"
-        tools:ignore="LockedOrientationActivity"
+        tools:ignore="DiscouragedApi,LockedOrientationActivity"
         tools:targetApi="s">
         <activity
             android:name=".video.VideoActivity"
