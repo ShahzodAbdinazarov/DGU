@@ -8,7 +8,7 @@ android {
 
     namespace 'dgu.app'
     defaultConfig {
-        applicationId "dgu.app.v061"
+        applicationId "dgu.app.v063"
         minSdk 23
         targetSdk 34
         versionCode 1

@@ -3,6 +3,7 @@ package dgu.app.ui
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.appbar.CollapsingToolbarLayout
@@ -11,6 +12,7 @@ import dgu.app.adapters.FileAdapter
 import dgu.app.utils.getMainFiles
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -19,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         colToolBar.title = getString(R.string.title)
         colToolBar.setExpandedTitleTextAppearance(R.style.ExpandedAppBar)
         colToolBar.setCollapsedTitleTextAppearance(R.style.CollapsedAppBar)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         val list = this@MainActivity.getMainFiles().sortedByDescending { it.isFolder }
         val sortedList = list.sortedWith(compareBy { if (it.fileName?.lowercase()?.contains("muallif") == true) 1 else 0 })
