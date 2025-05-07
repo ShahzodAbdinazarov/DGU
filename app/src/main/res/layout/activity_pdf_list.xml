@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
         android:theme="@style/Theme.DGU.AppBarOverlay">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -25,7 +23,8 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true">
 
                 <ImageView
                     android:id="@+id/banner"
@@ -33,13 +32,15 @@
                     android:layout_height="match_parent"
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/app_name"
+                    android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
                     android:src="@drawable/banner" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#9000" />
+                    android:background="#9000"
+                    android:fitsSystemWindows="true" />
 
             </FrameLayout>
 
@@ -47,6 +48,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
+                android:fitsSystemWindows="true"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/Theme.DGU.PopupOverlay" />
 

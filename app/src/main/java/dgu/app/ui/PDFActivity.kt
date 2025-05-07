@@ -26,7 +26,7 @@ class PDFActivity : AppCompatActivity() {
         val pdfView = findViewById<PDFView>(R.id.pdfView)
         try {
             pdfView.fromAsset(path).show()
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             Toast.makeText(this, "Fayl topilmadi!", Toast.LENGTH_SHORT).show()
         }
 
